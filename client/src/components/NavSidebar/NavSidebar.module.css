@@ -1,0 +1,75 @@
+.sidebar {
+  background: #9e24e9;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  height: calc(100% - 90px);
+  box-shadow: 4px 4px 20px #858484;
+  transition: width 0.5s ease-out;
+  overflow: hidden;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 145px;
+}
+
+.link {
+  color: #ffffff;
+  font-size: 48px;
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+}
+
+.link::after {
+  content: "";
+  width: 0;
+  position: absolute;
+  height: 4px;
+  background-color: #ffffff;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  transition: width 0.5s ease-out;
+}
+
+.message {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 40px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  padding-top: 270px;
+}
+
+.button {
+  color: #ffffff;
+  background-color: transparent;
+  border-radius: 20px;
+  font-size: 40px;
+  font-weight: 800;
+  outline: none;
+  border: none;
+  padding: 24px 48px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.open {
+  width: 400px;
+}
+
+.close {
+  width: 0;
+}

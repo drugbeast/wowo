@@ -1,0 +1,58 @@
+.header {
+  background-color: #9e24e9;
+  color: #ffffff;
+  box-shadow: 4px 4px 20px #858484;
+  z-index: 10;
+  position: relative;
+  height: 90px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo, .page {
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 80px;
+  font-weight: 500;
+}
+
+.page {
+  text-transform: capitalize;
+  position: relative;
+  right: 40px;
+}
+
+.burger {
+  cursor: pointer;
+}
+
+.line {
+  background-color: #ffffff;
+  width: 82px;
+  height: 14px;
+  position: relative;
+  top: 43%;
+  right: 0;
+}
+
+.line::after,
+.line::before {
+  content: "";
+  background-color: #ffffff;
+  height: 14px;
+  width: 82px;
+  display: block;
+  position: absolute;
+  left: 0;
+}
+
+.line::after {
+  top: 26px;
+}
+
+.line::before {
+  top: -26px;
+}
