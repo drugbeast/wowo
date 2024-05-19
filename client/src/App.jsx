@@ -1,6 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 
 import Layout from "./components/Layout";
+import { useAuth } from "./hooks/use-auth";
 import Calculator from "./pages/Calculator/Calculator";
 import Chat from "./pages/Chat/Chat";
 import History from "./pages/History/History";
@@ -9,6 +11,19 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 
 function App() {
+  const {isAuth} = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (isAuth && location.pathname == "/") {
+      navigate("/chat")
+    }
+    else if (!isAuth && location.pathname == "/") {
+      navigate("/sign-in")
+    }
+  }, [])
+  
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

@@ -20,7 +20,7 @@ function Chat() {
   const [value, setValue] = useState("");
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
-  const { isAuth } = useAuth();
+  const { isAuth, user } = useAuth();
 
   useEffect(() => {
     isAuth ? null : navigate("/sign-in");
@@ -38,8 +38,7 @@ function Chat() {
   const sendMessage = async () => {
     await addDoc(collection(firestore, "messages"), {
       text: value,
-      login: "Matvey",
-      uid: "Matvey",
+      email: user.email,
       timestamp: serverTimestamp(),
     });
     setValue("");
@@ -50,10 +49,15 @@ function Chat() {
       <div className="container">
         <div className={cn.inner}>
           <div id="messages" className={cn.messages}>
-            {messages &&
+            {messages ? (
               messages.map((message) => (
                 <Message message={message} key={message.id} />
-              ))}
+              ))
+            ) : (
+              <p className={cn.emptyChatMessage}>
+                Be the first to write a message
+              </p>
+            )}
           </div>
         </div>
       </div>

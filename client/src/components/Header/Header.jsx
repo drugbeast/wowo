@@ -8,7 +8,7 @@ import cn from "./Header.module.css";
 function Header() {
   const [isSidebarOpened, setOpen] = useState(false);
   const location = useLocation();
-  const {isAuth} = useAuth()
+  const { isAuth } = useAuth();
   return (
     <>
       <header className={cn.header}>
@@ -17,7 +17,8 @@ function Header() {
             <span className={cn.logo}>WoWo</span>
             <span className={cn.page}>
               {location.pathname != "/sign-in" &&
-                location.pathname != "/sign-up" && isAuth &&
+                location.pathname != "/sign-up" &&
+                isAuth &&
                 location.pathname.slice(1)}
             </span>
             <div

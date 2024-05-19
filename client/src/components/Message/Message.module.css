@@ -1,10 +1,30 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.user.container {
+  flex-direction: row-reverse;
+}
+
+.anotherUser.container {
+  flex-direction: row;
+}
+
 .message {
   display: flex;
   gap: 16px;
 }
 
+.anotherUser.message {
+  flex-direction: row-reverse;
+}
+
+.user.message {
+  flex-direction: row;
+}
+
 .field {
-  background-color: #9e24e9;
   border-radius: 40px;
   padding: 16px 24px;
   display: flex;
@@ -13,14 +33,36 @@
   gap: 48px;
 }
 
+.user.field {
+  background-color: #9e24e9;
+}
+
+.anotherUser.field {
+  background-color: #dfb5ff;
+}
+
 .text {
   font-weight: 200;
-  color: #ffffff;
   font-size: 40px;
+}
+
+.user.text {
+  color: #ffffff;
+}
+
+.anotherUser.text {
+  color: #000000;
 }
 
 .username {
   font-weight: 400;
-  color: #ffffff;
   font-size: 32px;
+}
+
+.user.username {
+  color: #ffffff;
+}
+
+.user.anotherUser {
+  color: #000000;
 }
