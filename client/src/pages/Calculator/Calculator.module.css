@@ -1,0 +1,100 @@
+.blockWithInput {
+  background-color: #dfb5ff;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inner {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+  padding-bottom: 54px;
+}
+
+.blockWithInput {
+  padding: 15px 44px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.selectBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.select {
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  background-color: #9e24e9;
+  padding: 8px 20px 8px 5px;
+  width: 20%;
+  font-weight: 400;
+}
+
+.input {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #f6e9ff;
+  padding: 20px 28px;
+  font-size: 48px;
+  font-weight: 400;
+  position: relative;
+}
+
+.equalitySign {
+  position: absolute;
+  color: #9e24e9;
+  border-radius: 10px;
+  background-color: #dfb5ff;
+  right: 140px;
+  top: 243px;
+  font-size: 48px;
+  padding: 3px 12px;
+  cursor: pointer;
+}
+
+.resultBlock {
+  background-color: #dfb5ff;
+  border-radius: 20px;
+  padding: 18px 40px 32px;
+}
+
+.resultTitle {
+  font-size: 50px;
+  padding: 0;
+  margin: 0;
+}
+
+.upperResultBlock {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  align-items: center;
+}
+
+.button {
+  border-radius: 20px;
+  outline: none;
+  background-color: #9e24e9;
+  height: fit-content;
+  border: none;
+  padding: 10px 8px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.textarea {
+  background-color: #f6e9ff;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  resize: none;
+  padding: 20px;
+  font-size: 32px;
+  width: 100%;
+}
