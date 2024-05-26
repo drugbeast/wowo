@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   addDoc,
   collection,
@@ -33,7 +34,7 @@ function Chat() {
       setMessages(msgs);
     });
     return () => unsubscribe();
-  }, [navigate, isAuth]);
+  }, [navigate]);
 
   const sendMessage = async () => {
     await addDoc(collection(firestore, "messages"), {
