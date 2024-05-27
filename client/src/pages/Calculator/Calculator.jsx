@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -44,13 +45,13 @@ function Calculator() {
     isAuth ? null : navigate("/sign-in");
     const textarea = document.getElementById("textarea");
     textarea.style.height = textarea.scrollHeight - 6 + "px";
-  }, [navigate, isAuth]);
+  }, [navigate]);
 
   const countResult = () => {
-    fetch("http://localhost:8082/calculate", {
+    fetch("http://localhost:8080/calculate", {
       body: JSON.stringify({
         function: functionChoosen,
-        expression,
+        expression: expression.trim(),
       }),
       method: "POST",
       headers: {

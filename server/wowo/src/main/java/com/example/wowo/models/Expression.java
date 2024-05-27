@@ -40,4 +40,7 @@ public class Expression {
     this.expression = expression;
     this.date = date;
   }
+
+  public Expression() {
+  }
 }

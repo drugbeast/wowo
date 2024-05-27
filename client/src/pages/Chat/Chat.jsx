@@ -23,18 +23,18 @@ function Chat() {
   const navigate = useNavigate();
   const { isAuth, user } = useAuth();
 
-  // useEffect(() => {
-  //   isAuth ? null : navigate("/sign-in");
-  //   const q = query(collection(firestore, "messages"), orderBy("timestamp"));
-  //   const unsubscribe = onSnapshot(q, (querySnapshot) => {
-  //     let msgs = [];
-  //     querySnapshot.forEach((doc) => {
-  //       msgs.push({ ...doc.data(), id: doc.id });
-  //     });
-  //     setMessages(msgs);
-  //   });
-  //   return () => unsubscribe();
-  // }, [navigate]);
+  useEffect(() => {
+    isAuth ? null : navigate("/sign-in");
+    const q = query(collection(firestore, "messages"), orderBy("timestamp"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let msgs = [];
+      querySnapshot.forEach((doc) => {
+        msgs.push({ ...doc.data(), id: doc.id });
+      });
+      setMessages(msgs);
+    });
+    return () => unsubscribe();
+  }, [navigate]);
 
   const sendMessage = async () => {
     await addDoc(collection(firestore, "messages"), {
@@ -50,13 +50,13 @@ function Chat() {
       <div className="container">
         <div className={cn.inner}>
           <div id="messages" className={cn.messages}>
-            {messages ? (
+            {messages.length ? (
               messages.map((message) => (
                 <Message message={message} key={message.id} />
               ))
             ) : (
               <p className={cn.emptyChatMessage}>
-                Be the first to write a message
+                Be the first to write a message!
               </p>
             )}
           </div>
