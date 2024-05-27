@@ -47,7 +47,7 @@ function Calculator() {
   }, [navigate, isAuth]);
 
   const countResult = () => {
-    fetch("http://localhost:8080/calculate", {
+    fetch("http://localhost:8082/calculate", {
       body: JSON.stringify({
         function: functionChoosen,
         expression,

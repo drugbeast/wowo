@@ -1,37 +1,34 @@
 package com.example.wowo.controllers;
 
-import java.sql.Date;
+// import java.sql.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wowo.models.CalculatorData;
-import com.example.wowo.models.Expression;
-import com.example.wowo.repos.HistoryRepository;
+// import com.example.wowo.models.Expression;
 import com.example.wowo.services.CalculatorService;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 public class CalculatorController {
-  @Autowired
-  private final HistoryRepository historyRepository;
+  // private final ExpressionRepository expressionRepository;
 
-  public CalculatorController(HistoryRepository historyRepository) {
-    this.historyRepository = historyRepository;
-  }
+  // public CalculatorController(ExpressionRepository expressionRepository) {
+  //   this.expressionRepository = expressionRepository;
+  // }
 
   @PostMapping(value = "/calculate", consumes = "application/json", produces = "application/json")
   public String calculate(@RequestBody CalculatorData calculatorData) {
     String result = "";
     CalculatorService calculatorService = new CalculatorService(calculatorData.getExpression());
-    long millis = System.currentTimeMillis();
-    Date date = new Date(millis);
-    long amountOfElements = historyRepository.count();
-    historyRepository.save(new Expression((int) amountOfElements + 1, calculatorData.getExpression(), date));
+    // long millis = System.currentTimeMillis();
+    // Date date = new Date(millis);
+    // long amountOfElements = expressionRepository.count();
+    // expressionRepository.save(new Expression((int) amountOfElements + 1, calculatorData.getExpression(), date));
     String function = calculatorData.getFunction();
     if (function.equals("factorial")) {
       result = calculatorService.getFactorial().toString();
