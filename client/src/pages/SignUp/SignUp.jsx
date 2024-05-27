@@ -8,8 +8,10 @@ import cn from "./SignUp.module.css";
 function SignUp() {
   const navigate = useNavigate();
 
+  const [error, setError] = useState(false);
   const [inputEmail, setEmail] = useState("");
   const [inputPassword, setPassword] = useState("");
+  const [repeatedPassword, setRepeatedPassword] = useState("");
 
   const handleRegister = (email, password) => {
     const auth = getAuth();
@@ -38,24 +40,47 @@ function SignUp() {
                 type="email"
                 placeholder="e-mail"
                 value={inputEmail}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setError(false);
+                  setEmail(e.target.value);
+                }}
               />
-              <input className={cn.input} type="text" placeholder="login" />
               <input
                 className={cn.input}
                 type="password"
                 placeholder="password"
                 value={inputPassword}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setError(false);
+                  setPassword(e.target.value);
+                }}
               />
               <input
                 className={cn.input}
                 type="password"
                 placeholder="repeat password"
+                value={repeatedPassword}
+                onChange={(e) => {
+                  setError(false);
+                  setRepeatedPassword(e.target.value);
+                }}
               />
             </div>
+            {error && (
+              <p className={cn.errorMessage}>
+                Something went wrong. Please, check that you filled all of
+                fields, your passwords are equal and have at least 6 symbols and
+                your email is correct
+              </p>
+            )}
             <button
-              onClick={() => handleRegister(inputEmail, inputPassword)}
+              onClick={() =>
+                inputPassword == repeatedPassword &&
+                inputPassword.length > 5 &&
+                inputEmail
+                  ? handleRegister(inputEmail, inputPassword)
+                  : setError(true)
+              }
               className={cn.button}
               type="submit"
             >

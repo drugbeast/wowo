@@ -8,6 +8,7 @@ import cn from "./SignIn.module.css";
 function SignIn() {
   const [inputEmail, setEmail] = useState("");
   const [inputPassword, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (email, password) => {
@@ -37,20 +38,37 @@ function SignIn() {
                 type="text"
                 placeholder="e-mail"
                 value={inputEmail}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setError(false);
+                  setEmail(e.target.value);
+                }}
               />
               <input
                 className={cn.input}
                 type="password"
                 placeholder="password"
                 value={inputPassword}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setError(false);
+                  setPassword(e.target.value);
+                }}
               />
             </div>
+            {error && (
+              <p className={cn.errorMessage}>
+                Something went wrong. Please, check that you filled both of
+                fields, your password has at least 6 symbols and your credentials
+                are correct
+              </p>
+            )}
             <button
               className={cn.button}
               type="submit"
-              onClick={() => handleLogin(inputEmail, inputPassword)}
+              onClick={() =>
+                inputEmail && inputPassword.length > 5
+                  ? handleLogin(inputEmail, inputPassword)
+                  : setError(!error)
+              }
             >
               Sign In
             </button>
